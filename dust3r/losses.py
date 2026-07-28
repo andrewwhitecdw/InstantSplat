@@ -106,7 +106,7 @@ class MultiLoss (nn.Module):
 
     def __add__(self, loss2):
         assert isinstance(loss2, MultiLoss)
-        res = cur = copy(self)
+        res = cur = deepcopy(self)
         # find the end of the chain
         while cur._loss2 is not None:
             cur = cur._loss2
