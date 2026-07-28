@@ -103,7 +103,7 @@ class ModularPointCloudOptimizer (BasePCOptimizer):
         return param
 
     def get_principal_points(self):
-        return torch.stack([pp.new((W/2, H/2))+10*pp for pp, (H, W) in zip(self.im_pp, self.imshapes)])
+        return torch.stack([pp.new_tensor((W/2, H/2))+10*pp for pp, (H, W) in zip(self.im_pp, self.imshapes)])
 
     def get_intrinsics(self):
         K = torch.zeros((self.n_imgs, 3, 3), device=self.device)
