@@ -98,14 +98,15 @@ def get_combined_args(parser : ArgumentParser):
     cfgfile_string = "Namespace()"
     args_cmdline = parser.parse_args(cmdlne_string)
 
+    cfgfilepath = None
     try:
         cfgfilepath = os.path.join(args_cmdline.model_path, "cfg_args")
         print("Looking for config file in", cfgfilepath)
         with open(cfgfilepath) as cfg_file:
             print("Config file found: {}".format(cfgfilepath))
             cfgfile_string = cfg_file.read()
-    except TypeError:
-        print("Config file not found at")
+    except (TypeError, FileNotFoundError):
+        print("Config file not found at {}".format(cfgfilepath if cfgfilepath is not None else args_cmdline.model_path))
         pass
     args_cfgfile = eval(cfgfile_string)
 
