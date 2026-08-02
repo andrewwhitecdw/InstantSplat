@@ -4,7 +4,7 @@
 # --------------------------------------------------------
 # Implementation of DUSt3R training losses
 # --------------------------------------------------------
-from copy import copy, deepcopy
+from copy import copy, deepcopy, deepcopy
 import torch
 import torch.nn as nn
 
